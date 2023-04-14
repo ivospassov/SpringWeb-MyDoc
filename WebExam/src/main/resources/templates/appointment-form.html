@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MyDoc</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="/css/my-doc-style.css" rel="stylesheet">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+</head>
+<body>
+<div class="container ">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="well-block">
+                <div class="well-title">
+                    <h2>Book an Appointment</h2>
+                </div>
+                <form th:action="@{/appointment/book/{id}(id=${docId})}" th:method="POST" th:object="${appointmentDTO}">
+                    <!-- Form start -->
+                    <div class="row">
+                        <!--                        <div class="col-md-6">-->
+                        <!--                            <div class="form-group">-->
+                        <!--                                <label class="control-label" for="name">Name</label>-->
+                        <!--                                <input th:field="*{name}" id="name" name="name" type="text" placeholder="Name"-->
+                        <!--                                       class="form-control input-md">-->
+                        <!--                            </div>-->
+                        <!--                        </div>-->
+                        <!--                        &lt;!&ndash; Text input&ndash;&gt;-->
+                        <!--                        <div class="col-md-6">-->
+                        <!--                            <div class="form-group">-->
+                        <!--                                <label class="control-label" for="email">Email</label>-->
+                        <!--                                <input th:field="*{email}" id="email" name="email" type="text" placeholder="E-Mail"-->
+                        <!--                                       class="form-control input-md">-->
+                        <!--                            </div>-->
+                        <!--                        </div>-->
+                        <!-- Text input-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label" for="date">Name</label>
+                                <input th:field="*{preferredDate}" id="date" name="date" type="text"
+                                       placeholder="01/05/2023"
+                                       class="form-control input-md">
+                                <!--                                <label class="control-label" for="date">Preferred Date</label>-->
+                                <!--                                <select th:field="*{preferredDate}" id="date" name="time" class="form-control">-->
+                                <!--                                    <option value="empty" th:disabled th:selected>Choose a preferred date</option>-->
+                                <!--                                    <option th:value="'01/04/2023'">01/04/2023</option>-->
+                                <!--                                    <option th:value="'02/04/2023'">02/04/2023</option>-->
+                                <!--                                    <option th:value="'03/04/2023'">03/04/2023</option>-->
+                                <!--                                </select>-->
+                            </div>
+                        </div>
+                        <!-- Select Basic -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label" for="time">Preferred Time</label>
+                                <select th:field="*{preferredTime}" id="time" name="time" class="form-control">
+                                    <option value="empty" th:disabled th:selected>Choose a preferred time</option>
+                                    <option th:value="'08:00'" selected>8:00 to 9:00</option>
+                                    <option th:value="'09:00'">9:00 to 10:00</option>
+                                    <option th:value="'10:00'">10:00 to 11:00</option>
+                                    <option th:value="'10:00'">11:00 to 12:00</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Select Basic -->
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label" for="appointment-for">Reason for the visit?</label>
+                                <select th:field="*{purposeOfVisit}" id="appointment-for" name="appointment-for" class="form-control">
+                                    <option th:value="'Primary Examination'">Primary Examination</option>
+                                    <option th:value="'Secondary Examination''">Secondary Examination</option>
+                                    <option th:value="'Medical Check''">Medical Check</option>
+                                    <option th:value="'Other Purpose''">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Button -->
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <a>
+                                    <button id="appointment-btn" name="singlebutton" class="btn btn-default">Make An
+                                        Appointment
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- form end -->
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="well-block">
+                <div class="well-title">
+                    <h2>Why Appointment with Us</h2>
+                </div>
+                <div class="feature-block">
+                    <div class="feature feature-blurb-text">
+                        <h4 class="feature-title">24/7 Hours Available</h4>
+                        <div class="feature-content">
+                            <p>Integer nec nisi sed mi hendrerit mattis. Vestibulum mi nunc, ultricies quis vehicula et,
+                                iaculis in magnestibulum.</p>
+                        </div>
+                    </div>
+                    <div class="feature feature-blurb-text">
+                        <h4 class="feature-title">Experienced Staff Available</h4>
+                        <div class="feature-content">
+                            <p>Aliquam sit amet mi eu libero fermentum bibendum pulvinar a turpis. Vestibulum quis
+                                feugiat risus. </p>
+                        </div>
+                    </div>
+                    <div class="feature feature-blurb-text">
+                        <h4 class="feature-title">Low Price & Fees</h4>
+                        <div class="feature-content">
+                            <p>Praesent eu sollicitudin nunc. Cras malesuada vel nisi consequat pretium. Integer auctor
+                                elementum nulla suscipit in.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<th:block th:include="~{/fragments/footer}"/>
+</body>
+</html>

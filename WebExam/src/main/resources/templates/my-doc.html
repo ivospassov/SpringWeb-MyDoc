@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<th:block th:include="~{/fragments/head-my-doc}" />
+<body style="background-image: url('/images/index-bg.png');
+            background-repeat: no-repeat; height: 100vh; width: 100%;">
+<header id="top" class="header mb-5">
+  <th:block th:replace="~{fragments/navbar :: navbar}"/>
+</header>
+<div style="width:85%; display:flex; gap: 20px; padding-top: 15px; padding-left: 20px">
+  <div class="doctor-img-container mt-5">
+    <img
+            src="./images/doctor-my-doc-transp.png"
+            class="rounded img-doctor"
+            alt="Cartoon image of doctor"
+    />
+  </div>
+  <div id="first-container" class="mt-5 appointment-section">
+
+    <form method="POST" th:action="@{/find-my-doc}" th:object="${myDocDTO}">
+      <h2 class="my-3">
+        Let's Find MyDoc and Book <br/>
+        An Appointment!
+      </h2>
+      <!-- <div class="appointment-details container mt-4"> -->
+      <div id="appointment-location" class="my-1.5">
+        <select th:field="*{location}" name="location" class="location">
+          <option value="" selected>Choose a city</option>
+          <option th:value="Sofia">Sofia</option>
+          <option th:value="Plovdiv">Plovdiv</option>
+          <option th:value="Bourgas">Bourgas</option>
+          <option th:value="Pleven">Pleven</option>
+          <option th:value="Blagoevgrad">Blagoevgrad</option>
+        </select>
+      </div>
+      <div id="appointment-specialty" class="my-1.5">
+        <select th:field="*{specialty}" name="specialty" class="specialty">
+          <option value="" selected>Choose a specialty</option>
+          <option th:value="Immunology">Immunology</option>
+          <option th:value="Anesthesiology">Anesthesiology</option>
+          <option th:value="Dermatology">Dermatology</option>
+          <option th:value="Radiology">Radiology</option>
+          <option th:value="Ophthalmology">Ophthalmology</option>
+          <option th:value="Pediatrics">Pediatrics</option>
+          <option th:value="Rehabilitation">Rehabilitation</option>
+          <option th:value="Psychiatry">Psychiatry</option>
+          <option th:value="Oncology">Oncology</option>
+          <option th:value="Urology">Urology</option>
+        </select>
+      </div>
+      <div id="appointment-hospital">
+        <input
+                name="hospital"
+                type="text"
+                class="hospital-search"
+                placeholder="Search a specific Health Center"
+        />
+      </div>
+      <button sec:authorize="isAuthenticated()" id="btn-search" type="submit" class="btn my-1.5">
+        Search
+      </button>
+
+    </form>
+  </div>
+</div>
+<th:block th:include="~{/fragments/footer}"/>
+</body>
+</html>

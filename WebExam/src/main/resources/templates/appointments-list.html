@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="~{/fragments/head}"/>
+<body>
+<th:block th:include="~{/fragments/navbar :: navbar}"/>
+<table class="table align-middle mb-0 bg-white">
+    <thead class="bg-light">
+    <tr>
+        <th>Doctor information</th>
+        <th>Hospital and Specialty</th>
+        <th>Status</th>
+        <th>Date</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="appointment: ${appointments}">
+        <td>
+            <div class="d-flex align-items-center">
+                <img
+                        th:src="${appointment.doctor.photoUrl}"
+                        alt="doctor photo"
+                        style="width: 45px; height: 45px"
+                        class="rounded-circle"
+                />
+                <div class="ms-3">
+                    <p class="fw-bold mb-1"
+                       th:text="${appointment.doctor.firstName} + ' ' + ${appointment.doctor.lastName}"></p>
+                    <p class="text-muted mb-0" th:text="${appointment.doctor.email}"></p>
+                </div>
+            </div>
+        </td>
+        <td>
+            <p class="fw-normal mb-1" th:text="${appointment.doctor.hospital.name}"></p>
+            <p class="text-muted mb-0" th:text="${appointment.doctor.specialty.name}"></p>
+        </td>
+        <td>
+            <span th:if="${appointment.status.equals('Going')}" class="badge badge-success rounded-pill d-inline"
+                  th:text="${appointment.status}"></span>
+            <span th:unless="${appointment.status.equals('Going')}" class="badge badge-danger rounded-pill d-inline"
+                  th:text="${appointment.status}"></span>
+        </td>
+        <td th:text="${appointment.appointmentDate.toString()} + ' | ' + ${appointment.appointmentTime.toString()}"></td>
+        <td>
+            <a th:href="@{/review/{id}(id=${appointment.doctor.id})}">
+                <button type="button" class="btn btn-link btn-sm btn-rounded">
+                    Leave a review
+                </button>
+            </a>
+            <a th:href="@{/appointments-list/cancel/{id}(id=${appointment.id})}">
+                <button type="button" class="btn btn-link btn-sm btn-rounded">
+                    Cancel
+                </button>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

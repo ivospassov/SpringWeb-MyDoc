@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<th:block th:include="~{/fragments/head-my-doc}"/>
+<body>
+<header id="top" class="header mb-5">
+    <th:block th:replace="~{/fragments/navbar :: navbar}"/>
+</header>
+<section th:each="doctor: ${doctors}" class="doc">
+    <img id="doc-img-list" th:src="${doctor.photoUrl}" alt="Doctor image">
+    <div>
+        <h2 th:text="'Dr. ' + ${doctor.firstName} + ' ' + ${doctor.lastName}"></h2>
+        <p th:text="${doctor.biography}"/>
+    </div>
+      <a sec:authorize="isAuthenticated()" th:href="@{/doctors/appointments/{id}(id=${doctor.id})}">
+        <button type="button" class="btn btn-danger">Book an appointment</button>
+      </a>
+      <a sec:authorize="!isAuthenticated()" th:href="@{/users/login}">
+        <button type="button" class="btn btn-danger">Log in to make an appointment</button>
+      </a>
+</section>
+<th:block  th:include="~{/fragments/footer}"/>
+</body>
+</html>

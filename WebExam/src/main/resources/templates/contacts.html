@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>MyDoc</title>
+  <link rel="stylesheet" href="/css/contacts.css"/>
+  <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous"
+  />
+</head>
+<body>
+<th:block th:replace="~{/fragments/navbar :: navbar}"/>
+<div class="container mt-sm-5">
+  <div style="text-align:center">
+    <h2>Contact Us</h2>
+    <p>Please leave us a message:</p>
+  </div>
+  <div class="row">
+    <div class="column">
+      <img th:src="@{https://rare-gallery.com/uploads/posts/4596056-stars-milky-way-space-art-space-night-trees-nature.jpg}"
+           style="width:100%">
+    </div>
+    <div class="column">
+      <form th:method="POST" th:action="@{/contacts/message/post}" th:object="${messageDTO}">
+        <label for="city">City</label>
+        <select id="city" name="city">
+          <option th:value="Empty" selected>Please choose a city...</option>
+          <option th:value="Sofia">Sofia</option>
+          <option th:value="Plovdiv">Plovdiv</option>
+          <option th:value="Bourgas">Bourgas</option>
+          <option th:value="Blagoevgrad">Blagoevgrad</option>
+          <option th:value="Pleven">Pleven</option>
+        </select>
+        <div class="mt-2">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Write something.."
+                    style="height:170px"></textarea>
+          <input type="submit" value="Submit">
+          <small th:if="${isEmpty == false}" class="ml-2 text-danger">Please choose a city and write a message...</small>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<th:block th:include="~{/fragments/footer}"/>
+</body>
+</html>

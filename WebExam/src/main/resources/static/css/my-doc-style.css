@@ -1,0 +1,133 @@
+h2 {
+    color: #222BFF;
+    font-size: 26px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 155px;
+}
+
+.appointment-section {
+    padding-right: 285px;
+}
+
+.location,
+.specialty {
+    border-color: #222bff;
+}
+
+.hospital-search,
+.location,
+.specialty {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 370px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border-width: 1.5px;
+    color: grey;
+}
+
+.logo-name {
+    color: #dc3545;
+    font-weight: 500;
+}
+
+.navbar-btn {
+    background-color: #dc3545;
+}
+
+.img-container {
+    float: left;
+    width: 50%;
+    /* margin-bottom: 150px; */
+}
+
+.img-doctor {
+    width: 380px;
+    height: 330px;
+    float: right;
+    padding-right: 80px;
+}
+
+#submit-btn {
+    background-color: #222BFF;
+}
+
+#btn-search, #btn-my-doc-login {
+    background-color: #222BFF;
+    border-color: #222BFF;
+    color: white;
+}
+
+#footer {
+    font-size: 30px;
+}
+
+#bg-auth-img {
+    background-image: url("../img/auth-bg.jpg");
+    height: 92vh
+}
+
+.rsc-nf {
+    background-image: url("../img/AdobeStock_279753293.jpeg");
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+}
+
+.wrapper {
+    width:85%;
+    display:flex;
+    gap: 20px;
+}
+
+.doc {
+    background-image: url("https://img.freepik.com/premium-photo/doctor-s-stethoscope-with-blue-background_23-2147652363.jpg");
+    background-repeat: no-repeat;
+    box-shadow: var(--shadow);
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 3rem;
+    grid-row: auto;
+}
+
+.well-block {
+    background-color: #fff;
+    border: 1px solid #e9e6e8;
+    padding: 40px;
+}
+
+.well-title {
+    margin-bottom: 40px;
+}
+
+#doc-img-list {
+    max-width: 100%;
+    width: 700px;
+    border-radius: 7%;
+}
+
+.checked {
+    color: orange;
+}
+
+.review-body {
+    /*background-image: url('review-bg.jpg');*/
+    background-image: url('https://png.pngtree.com/background/20210716/original/pngtree-office-desktop-background-picture-image_1353808.jpg');
+    background-repeat: no-repeat;
+    height: 400px;
+    background-size: cover;
+}
+
+.rating-container {
+    width: 35%;
+    margin-left: 15%;
+    padding-bottom: 50%;
+    margin-top: 6%;
+}
+
+#hidden-info {
+    display: none;
+}
