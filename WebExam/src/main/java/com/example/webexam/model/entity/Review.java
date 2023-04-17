@@ -3,7 +3,7 @@ package com.example.webexam.model.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "review")
+@Table(name = "reviews")
 public class Review extends BaseEntity {
 
     @Column(columnDefinition = "TEXT")

@@ -20,4 +20,6 @@ public interface DoctorService {
     List<Doctor> findByCityNameAndSpecialtyName(String city, SpecialtyType specialtyType);
 
     List<Doctor> findDoctorsByHospital(Hospital hospital);
+
+    void updateDoctorStatistics(Long doctorId);
 }

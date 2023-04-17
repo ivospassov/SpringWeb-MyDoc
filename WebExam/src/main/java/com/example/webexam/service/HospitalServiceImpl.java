@@ -42,8 +42,14 @@ public class HospitalServiceImpl implements HospitalService {
 
             List<Hospital> hospitals = new ArrayList<>(List.of(isul, tokuda, nadezhda, hope, sofiamed, mayo, aleksandrovska, serdika));
             List<Hospital> modifiedHospitals = hospitals.stream().map(this::setImageUrl).toList();
-            this.hospitalRepository.saveAll(modifiedHospitals);
+            List<Hospital> hospitalsModified = modifiedHospitals.stream().map(this::setUserSearchCount).toList();
+            this.hospitalRepository.saveAll(hospitalsModified);
         }
+    }
+
+    private Hospital setUserSearchCount(Hospital hospital) {
+        hospital.setUserSearchCount(0L);
+        return hospital;
     }
 
     private Hospital setImageUrl(Hospital hospital) {
@@ -80,5 +86,15 @@ public class HospitalServiceImpl implements HospitalService {
     @Override
     public List<Hospital> findByCity(String cityName) {
         return this.hospitalRepository.findByCityName(cityName);
+    }
+
+    @Override
+    public void updateHospitalStatistics(Long hospitalId) {
+        Hospital hospital = findById(hospitalId);
+        Long currentUserSearchCount = hospital.getUserSearchCount();
+
+        //Update search count for specific hospitals
+        hospital.setUserSearchCount(currentUserSearchCount + 1);
+        this.hospitalRepository.save(hospital);
     }
 }

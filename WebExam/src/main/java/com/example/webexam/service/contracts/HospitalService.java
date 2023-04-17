@@ -18,4 +18,7 @@ public interface HospitalService {
     List<Hospital> findAllHospitals();
 
     List<Hospital> findByCity(String cityName);
+
+    void updateHospitalStatistics(Long hospitalId);
+
 }

@@ -64,4 +64,13 @@ public class DoctorServiceImpl implements DoctorService {
     public List<Doctor> findDoctorsByHospital(Hospital hospital) {
         return this.doctorRepository.findAllByHospital(hospital);
     }
+
+    @Override
+    public void updateDoctorStatistics(Long doctorId) {
+        Doctor doctor = this.doctorRepository.findById(doctorId).get();
+        Long currentVisitations = doctor.getVisitationsCount();
+
+        doctor.setVisitationsCount(currentVisitations + 1L);
+        this.doctorRepository.save(doctor);
+    }
 }

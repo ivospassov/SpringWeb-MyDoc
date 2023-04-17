@@ -31,6 +31,8 @@ public class Doctor extends BaseEntity {
     @Email
     private String email;
 
+    private Long visitationsCount;
+
     @ManyToOne
     private City city;
 
@@ -44,7 +46,7 @@ public class Doctor extends BaseEntity {
 
     public Doctor(String firstName, String lastName, Integer age,
                   Specialty specialty, String biography, String email,
-                  City city, Hospital hospital, String photoUrl) {
+                  City city, Hospital hospital, String photoUrl, Long visitationsCount) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -54,6 +56,7 @@ public class Doctor extends BaseEntity {
         this.city = city;
         this.hospital = hospital;
         this.photoUrl = photoUrl;
+        this.visitationsCount = visitationsCount;
     }
 
     public String getFirstName() {
@@ -134,5 +137,13 @@ public class Doctor extends BaseEntity {
 
     public void setAppointments(Set<Appointment> appointments) {
         this.appointments = appointments;
+    }
+
+    public Long getVisitationsCount() {
+        return visitationsCount;
+    }
+
+    public void setVisitationsCount(Long visitationsCount) {
+        this.visitationsCount = visitationsCount;
     }
 }

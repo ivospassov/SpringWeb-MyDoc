@@ -31,8 +31,9 @@ public class UserService {
         this.userDetailsService = userDetailsService;
     }
 
-    public void registerUser(UserRegistrationDTO registrationDTO,
-                             Consumer<Authentication> successfulLoginProcessor) {
+    public void registerUser(UserRegistrationDTO registrationDTO
+                             //Consumer<Authentication> successfulLoginProcessor
+                             ) {
 
         UserEntity userEntity = new UserEntity().
                 setFirstName(registrationDTO.getFirstName()).
@@ -50,6 +51,6 @@ public class UserService {
                 userDetails.getAuthorities()
         );
 
-        successfulLoginProcessor.accept(authentication);
+//        successfulLoginProcessor.accept(authentication);
     }
 }

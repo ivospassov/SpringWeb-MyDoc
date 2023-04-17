@@ -42,7 +42,8 @@
         </td>
         <td th:text="${appointment.appointmentDate.toString()} + ' | ' + ${appointment.appointmentTime.toString()}"></td>
         <td>
-            <a th:href="@{/review/{id}(id=${appointment.doctor.id})}">
+            <a th:if="${@reviewServiceImpl.isAlreadyReviewed() == true}"
+               th:href="@{/review/{id}(id=${appointment.doctor.id})}">
                 <button type="button" class="btn btn-link btn-sm btn-rounded">
                     Leave a review
                 </button>

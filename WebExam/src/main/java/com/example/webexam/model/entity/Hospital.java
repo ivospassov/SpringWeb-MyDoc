@@ -14,6 +14,9 @@ public class Hospital extends BaseEntity {
     @Basic
     private String image;
 
+    @Column(name = "user_search_count")
+    private Long userSearchCount;
+
     @ManyToOne
     private City city;
 
@@ -57,5 +60,13 @@ public class Hospital extends BaseEntity {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public Long getUserSearchCount() {
+        return userSearchCount;
+    }
+
+    public void setUserSearchCount(Long userSearchCount) {
+        this.userSearchCount = userSearchCount;
     }
 }

@@ -12,6 +12,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -23,12 +25,14 @@ public class ReviewServiceImpl implements ReviewService {
     private final ModelMapper modelMapper;
     private final ReviewRepository reviewRepository;
     private final UserRepository userRepository;
+    private final UserDetailsService userDetailsService;
 
-    public ReviewServiceImpl(DoctorService doctorService, ModelMapper modelMapper, ReviewRepository reviewRepository, UserRepository userRepository) {
+    public ReviewServiceImpl(DoctorService doctorService, ModelMapper modelMapper, ReviewRepository reviewRepository, UserRepository userRepository, UserDetailsService userDetailsService) {
         this.doctorService = doctorService;
         this.modelMapper = modelMapper;
         this.reviewRepository = reviewRepository;
         this.userRepository = userRepository;
+        this.userDetailsService = userDetailsService;
     }
 
     @Override

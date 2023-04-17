@@ -12,4 +12,6 @@ import java.util.Optional;
 public interface ReviewRepository extends JpaRepository<Review, Long> {
 
     Optional<Review> findByDoctorAndPatient(Doctor doctor, UserEntity patient);
+
+    Optional<Review> findByPatientEmail(String email);
 }
